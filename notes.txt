@@ -1,0 +1,40 @@
+ _____TODO
+
+- seqrow_prev is still being retained (last row backed up), but this
+structure is not being used (i.e. no checking to see what previous state was)
+
+ _____Experimental SPI To Reduce Clock Freq
+
+add to lq.ino:
+
+#include <SPI.h>
+
+void setup()
+{
+//  SPI.begin();
+//  SPI.setClockDivider(SPI_CLOCK_DIV16);
+}
+
+ _____matrix.h Notes
+
+// http://tronixstuff.wordpress.com/2010/07/09/review-maxim-max7219-led-display-driver-ic/
+
+ _____matrix.h attempt to turn off a few digits to see if it stabilizes things
+
+//  lc.setScanLimit(0, 0); // turn on 4 digits
+
+ _____matrix.h matrix_row_play() old bitpacking method
+
+//  int bit_val = 1;
+
+//  This is the old bit packing method we used to use before switching over to the new per-LED method
+//
+//  for (int col=7; col>=0; col--)
+//  {
+//    if (seqrow[(row*8)+col] == 1)
+//    {
+//      rowbyte += bit_val;
+//    }
+//    bit_val *= 2;
+//  }
+
