@@ -1,0 +1,40 @@
+﻿Airfield Troubleshooting
+www.ledseq.com
+
+Document last updated: March 25, 2013.
+
+Contents
+
+  Airfield Troubleshooting
+  Blink Codes
+  Chase Pattern
+  Debugging Messages
+
+
+Blink Codes
+
+If Airfield encounters an issue during initialization or playback it will pulse the debug LED.  The number of pulses indicates the specific problem, as described in the table below.
+
+Pulses  Meaning                                   Typical Cause
+2       SD card type identification failed.       SD card not inserted, or not inserted firmly enough so that all pins are touching the connectors inside the socket.
+3       SD could not find FAT16/FAT32 partition.  SD card possibly formatted incorrectly.  Try reformatting the card again.  If the error persists, try a different SD card.
+4       SD library or card init failure.          This is a runtime code failure and may indicate corruption of the firmware on the Airfield controller chip.  It may also result from severing or bridging of traces on the circuit board.  Make sure no strong magnets are near the device (such as audio speakers).  Please contact the Airfield engineering team for further resolution.
+5       Sequence file failure.                    Airfield could not find a file called airfield.led on the SD card.  Depending on partition type, this filename is case sensitive so try to make sure your sequence file is called airfield.led not AIRFIELD.LED.
+	
+
+We would like to make Airfield the best product possible, so if you encounter any problems please contact us at ledseq@ledseq.com  and we will make every effort to resolve your situation.
+
+Chase Pattern
+
+If you would like to verify that all of your LEDs have continuity, simply remove the SD card from Airfield and turn the unit on.  It will immediately go into diagnostic mode showing a test chase pattern.
+Debugging Messages
+
+If you would like to watch realtime diagnostic information via a serial console, please perform the following steps:
+
+1. Flip the DIAG (diagnostic) switch on the Airfield circuit board.
+2. Hook up an FTDI cable between Airfield and your computer.  We recommend http://learn.adafruit.com/ftdi-friend
+3. Download and install the Arduino IDE.
+4. Set the Tools > Board type to "Arduino Uno".
+5. Make sure Tools > Serial Port is set to a valid port for your machine.
+6. Open the output window under Tools > Serial Monitor.
+7. In the Serial Monitor window make sure the speed setting is at 115200 baud (configured via a drop-down box in the lower-right corner of the window).
